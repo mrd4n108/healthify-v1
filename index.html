@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthify - Jalan Anda Menuju Kebugaran</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Palet Biru Muda / Putih
+                        'brand-light': '#E0F2FE', // sky-100
+                        'brand-primary': '#38BDF8', // sky-400 (Aksen)
+                        'brand-dark': '#0C4A6E',   // sky-900 (Teks Gelap)
+
+                        // Warna status untuk bagian fakta
+                        'healthify-red': '#EF5350', // Merah
+                        'healthify-blue': '#42A5F5' // Biru
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    },
+                    maxWidth: {
+                        '7xl': '80rem', // 1280px (Ukuran desktop lebih besar)
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased text-gray-800">
+
+    <div id="preloader">
+        <div class="heart-beat"></div>
+    </div>
+
+    <header
+        class="fixed top-6 left-1/2 -translate-x-1/2 w-11/12 md:w-auto z-50 transition-all duration-300 ease-in-out">
+        <nav
+            class="glass-nav rounded-full max-w-2xl mx-auto px-8 py-4 flex items-center justify-between transition-all duration-300 ease-in-out">
+
+            <a href="#" class="font-bold text-xl text-brand-dark nav-link mr-6 text-health-blue-700" data-page="home">
+                Healthify
+            </a>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-700 hover:text-brand-primary transition duration-300 nav-link active"
+                    data-page="home">Beranda</a>
+                <a href="#" class="text-gray-700 hover:text-brand-primary transition duration-300 nav-link"
+                    data-page="articles">Artikel</a>
+                <a href="#" class="text-gray-700 hover:text-brand-primary transition duration-300 nav-link"
+                    data-page="about">Tentang</a>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu"
+            class="md:hidden glass-nav shadow-lg absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-11/12 rounded-3xl p-4 hidden transition-all duration-300 ease-in-out">
+            <a href="#"
+                class="block text-gray-700 hover:text-brand-primary py-2 transition duration-300 nav-link active"
+                data-page="home">Beranda</a>
+            <a href="#" class="block text-gray-700 hover:text-brand-primary py-2 transition duration-300 nav-link"
+                data-page="articles">Artikel</a>
+            <a href="#" class="block text-gray-700 hover:text-brand-primary py-2 transition duration-300 nav-link"
+                data-page="about">Tentang</a>
+        </div>
+    </header>
+
+    <main class="pt-24 px-4 md:px-8 max-w-7xl mx-auto">
+
+        <section id="page-home" class="page-section">
+            <div
+                class="flex flex-col lg:flex-row items-center justify-between min-h-[calc(100vh-10rem)] gap-12 py-12 lg:py-0">
+
+                <div class="w-full lg:w-1/2 text-center lg:text-left" data-aos="fade-right">
+                    <span class="text-brand-primary font-semibold text-lg">Selamat Datang di Healthify</span>
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mt-2 mb-2 leading-tight">
+                        Temukan Jalan Anda Menuju
+                    </h1>
+
+                    <h2 class="text-3xl md:text-5xl font-bold text-brand-dark mb-6 leading-tight">
+                        <span id="typing-text"></span><span class="typing-cursor"></span>
+                    </h2>
+                    <p class="text-gray-600 text-base md:text-lg mt-4 mb-8 max-w-md mx-auto lg:mx-0">
+                        Platform Anda untuk informasi kesehatan yang terpercaya, alat kebugaran yang praktis, dan
+                        komunitas yang suportif.
+                    </p>
+                    <a href="#"
+                        class="glass-card inline-block px-8 py-3 rounded-full font-semibold text-brand-dark shadow-lg transition duration-300 hover:scale-105 hover:shadow-xl hover:bg-white/50 nav-link"
+                        data-page="articles">
+                        Mulai Menjelajah
+                    </a>
+                </div>
+
+                <div class="w-full lg:w-1/2 flex justify-center" data-aos="zoom-in-left">
+                    <img src="https://www.pngarts.com/files/3/Doctor-Transparent-Images.png" alt="Ilustrasi Kesehatan"
+                        class="rounded-3xl shadow-xl w-full max-w-md lg:max-w-none h-auto">
+                </div>
+            </div>
+
+            <div class="py-16 md:py-24 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12" data-aos="fade-up">Kenapa Memilih Healthify?</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+                    <div class="bg-white rounded-3xl shadow-lg p-6 md:p-8 transition duration-300 hover:shadow-2xl hover:scale-[1.03]"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 bg-brand-light text-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 12h6m-3-4h3">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Artikel Terkurasi</h3>
+                        <p class="text-gray-600 text-sm">Informasi kesehatan mendalam yang ditulis oleh para ahli dan
+                            mudah dipahami.</p>
+                    </div>
+
+                    <div class="bg-white rounded-3xl shadow-lg p-6 md:p-8 transition duration-300 hover:shadow-2xl hover:scale-[1.03]"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 bg-brand-light text-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Komunitas Suportif</h3>
+                        <p class="text-gray-600 text-sm">Bergabung dengan komunitas yang peduli dan saling memotivasi.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-3xl shadow-lg p-6 md:p-8 transition duration-300 hover:shadow-2xl hover:scale-[1.03]"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 bg-brand-light text-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Asisten AI</h3>
+                        <p class="text-gray-600 text-sm">Dapatkan jawaban cepat untuk pertanyaan kesehatan Anda, kapan
+                            saja, di mana saja.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-stats" class="py-16 md:py-24 bg-brand-light rounded-4xl my-16 md:my-24 overflow-hidden">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-brand-dark"
+                    data-aos="fade-up">Kesehatan dalam Angka</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-4xl lg:text-5xl font-bold text-brand-primary stat-counter" data-target="7">0
+                        </h3>
+                        <p class="text-gray-600 mt-2 font-semibold text-sm md:text-base">Jam Tidur Ideal</p>
+                    </div>
+
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-4xl lg:text-5xl font-bold text-brand-primary stat-counter" data-target="8">0
+                        </h3>
+                        <p class="text-gray-600 mt-2 font-semibold text-sm md:text-base">Gelas Air / Hari</p>
+                    </div>
+
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-4xl lg:text-5xl font-bold text-brand-primary stat-counter" data-target="30">0
+                        </h3>
+                        <p class="text-gray-600 mt-2 font-semibold text-sm md:text-base">Menit Olahraga / Hari</p>
+                    </div>
+
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="text-4xl lg:text-5xl font-bold text-brand-primary stat-counter" data-target="10000">0
+                        </h3>
+                        <p class="text-gray-600 mt-2 font-semibold text-sm md:text-base">Langkah Kaki / Hari</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-facts" class="page-section py-16 md:py-24 my-16 md:my-24">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-gray-900" data-aos="fade-up">
+                    Penyebab Kematian Global Teratas</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <div class="glass-card p-6 md:p-8 flex flex-col items-center text-center" data-aos="fade-right">
+                        <div
+                            class="w-20 h-20 md:w-24 md:h-24 bg-healthify-red/20 text-healthify-red rounded-full flex items-center justify-center mb-4 md:mb-6">
+                            <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.24a2 2 0 010 2.828l-6.828 6.829a2 2 0 01-2.828 0l-4.95-4.95a2 2 0 010-2.828l6.828-6.829a2 2 0 012.828 0l4.95 4.95z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-healthify-red mb-3">Penyakit Non-Menular</h3>
+                        <p class="text-gray-700 mb-6 text-base md:text-lg">Faktor gaya hidup dan genetik berperan besar.
+                        </p>
+                        <ul class="text-left space-y-3 w-full max-w-sm">
+                            <li class="flex items-center text-gray-800 text-sm md:text-base">
+                                <span class="w-3 h-3 bg-healthify-red rounded-full mr-3 flex-shrink-0"></span> Penyakit
+                                Jantung Iskemik
+                            </li>
+                            <li class="flex items-center text-gray-800 text-sm md:text-base">
+                                <span class="w-3 h-3 bg-healthify-red rounded-full mr-3 flex-shrink-0"></span> Stroke
+                            </li>
+                            <li class="flex items-center text-gray-800 text-sm md:text-base">
+                                <span class="w-3 h-3 bg-healthify-red rounded-full mr-3 flex-shrink-0"></span> Penyakit
+                                Paru Obstruktif Kronik
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card p-6 md:p-8 flex flex-col items-center text-center" data-aos="fade-left">
+                        <div
+                            class="w-20 h-20 md:w-24 md:h-24 bg-healthify-blue/20 text-healthify-blue rounded-full flex items-center justify-center mb-4 md:mb-6">
+                            <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-healthify-blue mb-3">Penyakit Menular</h3>
+                        <p class="text-gray-700 mb-6 text-base md:text-lg">Dapat dicegah melalui kebersihan dan
+                            vaksinasi.</p>
+                        <ul class="text-left space-y-3 w-full max-w-sm">
+                            <li class="flex items-center text-gray-800 text-sm md:text-base">
+                                <span class="w-3 h-3 bg-healthify-blue rounded-full mr-3 flex-shrink-0"></span> Infeksi
+                                Saluran Pernapasan Bawah
+                            </li>
+                            <li class="flex items-center text-gray-800 text-sm md:text-base">
+                                <span class="w-3 h-3 bg-healthify-blue rounded-full mr-3 flex-shrink-0"></span> Diare
+                            </li>
+                            <li class="flex items-center text-gray-800 text-sm md:text-base">
+                                <span class="w-3 h-3 bg-healthify-blue rounded-full mr-3 flex-shrink-0"></span>
+                                Tuberkulosis (TBC)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-center text-gray-500 text-sm mt-8" data-aos="fade-up" data-aos-delay="200">
+                    Sumber data: World Health Organization (WHO)
+                </p>
+            </div>
+        </section>
+
+        <section id="page-articles" class="page-section min-h-screen pt-16 md:pt-24">
+            <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12" data-aos="fade-up">Artikel Kesehatan
+                Terbaru</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-16 md:pb-24">
+
+                <div class="glass-card overflow-hidden transition duration-300 hover:scale-[1.02] hover:shadow-xl"
+                    data-aos="zoom-in">
+                    <img src="https://png.pngtree.com/png-vector/20240721/ourmid/pngtree-color-diet-white-food-nutrition-veggies-and-nuts-png-image_12987299.png"
+                        alt="Nutrisi" class="w-full h-48 object-cover">
+                    <div class="p-5 md:p-6">
+                        <span class="text-xs md:text-sm font-semibold text-brand-primary">Nutrisi</span>
+                        <h3 class="text-lg md:text-xl font-bold my-2">Pentingnya Sarapan Sehat untuk Memulai Hari</h3>
+                        <p class="text-gray-600 text-sm line-clamp-3">Sarapan sering disebut sebagai waktu makan
+                            terpenting. Temukan alasannya dan ide resep sehat...</p>
+                        <a href="#" class="text-brand-dark font-semibold text-sm mt-4 inline-block">Baca Selengkapnya
+                            &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="glass-card overflow-hidden transition duration-300 hover:scale-[1.02] hover:shadow-xl"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://edukesehatan.ac.id/wp-content/uploads/2025/06/apakah-komponen-kebugaran-jasmani-yang-bisa-meningkatkan-kesehatan.jpg"
+                        alt="Kebugaran" class="w-full h-48 object-cover">
+                    <div class="p-5 md:p-6">
+                        <span class="text-xs md:text-sm font-semibold text-green-600">Kebugaran</span>
+                        <h3 class="text-lg md:text-xl font-bold my-2">5 Latihan Sederhana yang Bisa Dilakukan di Rumah
+                        </h3>
+                        <p class="text-gray-600 text-sm line-clamp-3">Tidak punya waktu ke gym? Coba 5 latihan efektif
+                            ini tanpa perlu alat khusus...</p>
+                        <a href="#" class="text-brand-dark font-semibold text-sm mt-4 inline-block">Baca Selengkapnya
+                            &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="glass-card overflow-hidden transition duration-300 hover:scale-[1.02] hover:shadow-xl"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://ners.unair.ac.id/site/images/33_mental.png" alt="Kesehatan Mental"
+                        class="w-full h-48 object-cover">
+                    <div class="p-5 md:p-6">
+                        <span class="text-xs md:text-sm font-semibold text-yellow-600">Mental</span>
+                        <h3 class="text-lg md:text-xl font-bold my-2">Teknik Mindfulness untuk Mengurangi Stres</h3>
+                        <p class="text-gray-600 text-sm line-clamp-3">Stres adalah bagian dari hidup, tapi bisa
+                            dikelola. Pelajari teknik mindfulness sederhana...</p>
+                        <a href="#" class="text-brand-dark font-semibold text-sm mt-4 inline-block">Baca Selengkapnya
+                            &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="glass-card overflow-hidden transition duration-300 hover:scale-[1.02] hover:shadow-xl"
+                    data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://ahligizi.id/blog/wp-content/uploads/2021/01/water-5767178_1280-800x445.png"
+                        alt="Hidrasi" class="w-full h-48 object-cover">
+                    <div class="p-5 md:p-6">
+                        <span class="text-xs md:text-sm font-semibold text-blue-600">Hidrasi</span>
+                        <h3 class="text-lg md:text-xl font-bold my-2">Manfaat Minum Air Cukup Setiap Hari</h3>
+                        <p class="text-gray-600 text-sm line-clamp-3">Air adalah komponen penting bagi tubuh. Ketahui
+                            berapa banyak air yang Anda butuhkan...</p>
+                        <a href="#" class="text-brand-dark font-semibold text-sm mt-4 inline-block">Baca Selengkapnya
+                            &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="glass-card overflow-hidden transition duration-300 hover:scale-[1.02] hover:shadow-xl"
+                    data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://irp.cdn-website.com/4c569d4c/dms3rep/multi/wanita+yang+sedang+tidur+nyenyak.png"
+                        alt="Tidur" class="w-full h-48 object-cover">
+                    <div class="p-5 md:p-6">
+                        <span class="text-xs md:text-sm font-semibold text-purple-600">Tidur</span>
+                        <h3 class="text-lg md:text-xl font-bold my-2">Kualitas Tidur: Kunci Regenerasi Tubuh</h3>
+                        <p class="text-gray-600 text-sm line-clamp-3">Tidur bukan hanya istirahat. Ini adalah proses
+                            vital untuk perbaikan sel dan kesehatan otak...</p>
+                        <a href="#" class="text-brand-dark font-semibold text-sm mt-4 inline-block">Baca Selengkapnya
+                            &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="glass-card overflow-hidden transition duration-300 hover:scale-[1.02] hover:shadow-xl"
+                    data-aos="zoom-in" data-aos-delay="500">
+                    <img src="https://asset.kompas.com/crops/GujgzmHxiYXfGid1ujrg2XGoxTE=/77x64:869x592/750x500/data/photo/2017/04/07/2932095487.jpg"
+                        alt="Kardio" class="w-full h-48 object-cover">
+                    <div class="p-5 md:p-6">
+                        <span class="text-xs md:text-sm font-semibold text-red-600">Kardio</span>
+                        <h3 class="text-lg md:text-xl font-bold my-2">Menjaga Kesehatan Jantung dengan Latihan Kardio
+                        </h3>
+                        <p class="text-gray-600 text-sm line-clamp-3">Lari, bersepeda, atau berenang? Temukan jenis
+                            latihan kardio yang tepat untuk Anda...</p>
+                        <a href="#" class="text-brand-dark font-semibold text-sm mt-4 inline-block">Baca Selengkapnya
+                            &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-about" class="page-section min-h-screen pt-16 md:pt-24">
+            <div class="max-w-3xl mx-auto glass-card p-6 md:p-12" data-aos="fade-up">
+                <h1 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8">Tentang Healthify</h1>
+                <div class="space-y-5 text-gray-700 text-base md:text-lg leading-relaxed">
+                    <p>
+                        Healthify lahir dari keyakinan bahwa informasi kesehatan yang akurat dan mudah diakses adalah
+                        hak setiap orang. Di era digital ini, kami berupaya menjadi jembatan antara pengetahuan medis
+                        yang kompleks dengan kebutuhan gaya hidup Anda yang dinamis.
+                    </p>
+                    <h2 class="text-xl md:text-2xl font-bold pt-4">Misi Kami</h2>
+                    <p>
+                        Misi kami adalah memberdayakan Anda untuk mengambil keputusan yang lebih baik tentang kesehatan
+                        Anda. Kami menyediakan artikel yang terkurasi, alat interaktif yang praktis, dan dukungan
+                        komunitas untuk menemani setiap langkah perjalanan kebugaran Anda.
+                    </p>
+                    <p>
+                        Kami percaya bahwa "sehat" bukan hanya tentang tidak adanya penyakit, tetapi tentang mencapai
+                        keseimbangan optimal antara kesehatan fisik, mental, dan emosional.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-dark text-gray-200 pt-16 pb-8 mt-12 md:mt-16">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+                <div>
+                    <h3 class="font-bold text-2xl text-white mb-3">Healthify</h3>
+                    <p class="text-sm text-gray-300">Jalan Anda Menuju Kehidupan yang Lebih Sehat dan Bahagia.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg text-white mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#"
+                                class="text-sm text-gray-300 hover:text-brand-primary transition duration-300 nav-link"
+                                data-page="home">Beranda</a></li>
+                        <li><a href="#"
+                                class="text-sm text-gray-300 hover:text-brand-primary transition duration-300 nav-link"
+                                data-page="articles">Artikel</a></li>
+                        <li><a href="#"
+                                class="text-sm text-gray-300 hover:text-brand-primary transition duration-300 nav-link"
+                                data-page="about">Tentang Kami</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg text-white mb-4">Kontak (Placeholder)</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            <span>info@healthify.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z">
+                                </path>
+                            </svg>
+                            <span>+62 123 456 789</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Jakarta, Indonesia</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg text-white mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-brand-primary transition duration-300"
+                            aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-brand-primary transition duration-300"
+                            aria-label="Twitter">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.565-.665 2.452 0 2.11.993 3.985 2.632 5.068-.906-.028-1.758-.277-2.503-.693v.065c0 2.947 1.782 5.463 4.135 6.028-.43.117-.887.179-1.36.179-.332 0-.655-.032-.969-.09 1.002 2.69 3.217 4.35 5.753 4.411-1.808 1.41-4.045 2.16-6.39 2.16-.415 0-.825-.024-1.228-.073 2.378 1.528 5.122 2.39 8.028 2.39 9.38 0 14.5-7.7 14.5-14.5 0-.22 0-.44-.015-.658.997-.718 1.862-1.614 2.548-2.643z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-brand-primary transition duration-300"
+                            aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.849.069-3.205 0-3.584-.012-4.849-.069-3.225-.149-4.771-1.664-4.919-4.919-.058-1.265-.069-1.644-.069-4.849 0-3.204.013-3.583.069-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-600 mt-12 pt-6 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2025 Healthify. Semua Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="chat-toggle-btn"
+        class="fixed bottom-6 right-6 z-50 bg-brand-primary text-white w-14 h-14 md:w-16 md:h-16 rounded-full shadow-xl flex items-center justify-center transition duration-300 hover:scale-110 focus:outline-none"
+        title="Buka Asisten AI">
+        <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+            </path>
+        </svg>
+    </button>
+
+    <div id="chat-modal"
+        class="fixed inset-0 z-[60] flex items-center justify-center transition-opacity duration-300 hidden opacity-0"
+        data-lenis-ignore>
+
+        <div id="chat-overlay" class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+
+        <div id="chat-window"
+            class="glass-card z-10 w-11/12 md:w-2/3 lg:w-1/2 xl:w-1/3 h-[80vh] max-h-[700px] flex flex-col rounded-4xl shadow-2xl overflow-hidden transition-all duration-300 scale-95">
+
+            <div class="flex items-center justify-between p-4 border-b border-white/20">
+                <h3 class="font-bold text-lg text-brand-dark">Asisten Kesehatan AI</h3>
+                <button id="chat-close-btn" class="text-gray-500 hover:text-gray-900 transition duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto min-h-0">
+
+                <div class="flex">
+                    <div class="bg-brand-light text-brand-dark p-3 rounded-2xl rounded-bl-none max-w-[85%]">
+                        <p class="text-sm">Halo! Saya Asisten Kesehatan AI Anda. Ada yang bisa saya bantu terkait tips
+                            kebugaran atau informasi kesehatan umum?</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="chat-form" class="p-4 border-t border-white/20">
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="chat-input" placeholder="Ketik pertanyaan Anda..."
+                        class="flex-1 px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-primary bg-white/50"
+                        autocomplete="off">
+                    <button type="submit"
+                        class="bg-brand-primary text-white w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center shadow-lg transition duration-300 hover:scale-105">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="script.js" type="module"></script>
+</body>
+
+</html>
