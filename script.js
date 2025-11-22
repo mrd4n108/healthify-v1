@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const apiKey = "AIzaSyAUhUA8a1hkxkV0AVFMMA1XYyDbUmPab1A"; // <-- GANTI DENGAN API KEY ANDA
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-    const systemPrompt = "Anda adalah Asisten Kesehatan AI yang ramah, suportif, dan informatif. Anda dapat memberikan informasi kesehatan umum, tips kebugaran, dan saran gaya hidup sehat. Anda BUKAN profesional medis dan tidak dapat memberikan diagnosis atau nasihat medis. Selalu ingatkan pengguna untuk berkonsultasi dengan dokter untuk masalah medis.";
+    // --- const systemPrompt = "Anda adalah Asisten Kesehatan AI yang ramah, suportif, dan informatif. Anda dapat memberikan informasi kesehatan umum, tips kebugaran, dan saran gaya hidup sehat. Anda BUKAN profesional medis dan tidak dapat memberikan diagnosis atau nasihat medis. Selalu ingatkan pengguna untuk berkonsultasi dengan dokter untuk masalah medis.";
 
     async function fetchWithBackoff(apiUrl, payload, retries = 3, delay = 1000) {
         try {
